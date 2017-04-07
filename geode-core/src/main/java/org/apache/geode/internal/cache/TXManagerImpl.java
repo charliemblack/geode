@@ -1276,7 +1276,7 @@ public class TXManagerImpl implements CacheTransactionManager, MembershipListene
     }
     return false;
   }
-  
+
   private void resumeProxy(TXStateProxy txProxy) {
     assert txProxy != null;
     internalResume(txProxy);
