@@ -675,7 +675,7 @@ public class TXManagerImpl implements CacheTransactionManager, MembershipListene
    * @param tx the transaction to activate.
    * @throws IllegalStateException if this thread already has an active transaction
    */
-  public final void internalResume(TXStateProxy tx) {
+  public void internalResume(TXStateProxy tx) {
     if (tx != null) {
       TransactionId tid = getTransactionId();
       if (tid != null) {
@@ -686,6 +686,13 @@ public class TXManagerImpl implements CacheTransactionManager, MembershipListene
       setTXState(tx);
       tx.resume();
     }
+  }
+
+  /**
+   * @deprecated use internalResume instead
+   */
+  public final void resume(TXStateProxy tx) {
+    internalResume(tx);
   }
 
   public final boolean isClosed() {
